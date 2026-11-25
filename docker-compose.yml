@@ -41,11 +41,13 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/punto_venta?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root123
-    ports:
-      - "8080:8080"
+      DB_USER: ${DB_USER:?Falta en .env}
+      DB_PASSWORD: ${DB_PASSWORD:?Falta en .env}
+      PASARELA_API_KEY: ${PASARELA_API_KEY:?Falta en .env}
+      PASARELA_SECRET: ${PASARELA_SECRET:?Falta en .env}
+      JWT_SECRET: ${JWT_SECRET:?Falta en .env}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:?Falta en .env}
+      FACTURACION_API_TOKEN: ${FACTURACION_API_TOKEN:?Falta en .env}
     volumes:
       - ./backend/logs:/app/logs
       - ./backend/uploads:/app/uploads
